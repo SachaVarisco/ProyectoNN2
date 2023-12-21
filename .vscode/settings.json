@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "The Bortall Proyect.sln"
+    "dotnet.defaultSolution": "ProyectoNN2.sln"
 }
