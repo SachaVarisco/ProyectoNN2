@@ -5,9 +5,11 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     // Start is called before the first frame update
-     public MonoBehaviour startState;
+    /*public MonoBehaviour startState;
     public MonoBehaviour patrollState;
-    public MonoBehaviour attackState;
+    public MonoBehaviour attackState;*/
+
+    public MonoBehaviour[] stateArray;
 
     private MonoBehaviour ActualState;
 
@@ -15,7 +17,7 @@ public class StateMachine : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        ActivateState(startState);
+        ActivateState(stateArray[0]);
     }
 
     // Update is called once per frame 

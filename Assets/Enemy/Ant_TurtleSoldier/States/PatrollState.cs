@@ -6,6 +6,7 @@ public class PatrollState : MonoBehaviour
 {
     [Header("StateMachine")]
     private StateMachine StateMachine;
+    [SerializeField] private GameObject StateIndicator;
 
     [Header("Raycast")]
 
@@ -33,7 +34,10 @@ public class PatrollState : MonoBehaviour
         RandNum = Random.Range(0,WayPoints.Length);
         rcOrientation = new Vector2(-1,0);
     }
-    // Update is called once per frame
+    private void OnEnable() {
+        StateIndicator.GetComponent<SpriteRenderer>().color = Color.green;
+    }
+
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, WayPoints[RandNum].position, Speed * Time.deltaTime);
@@ -44,9 +48,9 @@ public class PatrollState : MonoBehaviour
 
         rchit = Physics2D.Raycast(gameObject.transform.position, rcOrientation, distance, Layer);
         Debug.DrawRay(gameObject.transform.position, rcOrientation * distance, Color.green);
-        if (rchit.collider != null && rchit.collider.CompareTag("Player")/*gameObject.layer == LayerMask.NameToLayer("Player")*/)
+        if (rchit.collider != null && rchit.collider.CompareTag("Player"))
         {
-            StateMachine.ActivateState(StateMachine.attackState);
+            StateMachine.ActivateState(StateMachine.stateArray[1]);
         }
     }
     private void FixedUpdate() 
@@ -55,11 +59,11 @@ public class PatrollState : MonoBehaviour
         CalcSpeed();
         if (VelocityX > 0 && LookLeft) 
         {
-            RotateX(); 
+            RotateX();
         }
         if (VelocityX < 0 && !LookLeft)
         {
-            RotateX(); 
+            RotateX();
         }
     }
     private float CalcSpeed()
