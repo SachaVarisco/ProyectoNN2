@@ -5,7 +5,7 @@ using UnityEngine;
 public class PatrollState : MonoBehaviour
 {
     [Header("StateMachine")]
-    private StateMachine StateMachine;
+    private StateMachine StateMach;
     [SerializeField] private GameObject StateIndicator;
 
     [Header("Raycast")]
@@ -29,7 +29,7 @@ public class PatrollState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StateMachine = GetComponent<StateMachine>();
+        StateMach = GetComponent<StateMachine>();
         rotation = new Quaternion();
         RandNum = Random.Range(0,WayPoints.Length);
         rcOrientation = new Vector2(-1,0);
@@ -50,7 +50,7 @@ public class PatrollState : MonoBehaviour
         Debug.DrawRay(gameObject.transform.position, rcOrientation * distance, Color.green);
         if (rchit.collider != null && rchit.collider.CompareTag("Player"))
         {
-            StateMachine.ActivateState(StateMachine.stateArray[1]);
+            StateMach.ActivateState(StateMach.stateArray[1]);
         }
     }
     private void FixedUpdate() 

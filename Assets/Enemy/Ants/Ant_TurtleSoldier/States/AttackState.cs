@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackState : MonoBehaviour
 {
     [Header("StateMachine")]
-    private StateMachine StateMachine;
+    private StateMachine StateMach;
     [SerializeField] private GameObject StateIndicator;
 
     [Header("Movement")]
@@ -14,7 +14,7 @@ public class AttackState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StateMachine = GetComponent<StateMachine>();
+        StateMach = GetComponent<StateMachine>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
     private void OnEnable() {
@@ -26,7 +26,7 @@ public class AttackState : MonoBehaviour
     }
     IEnumerator Wait(){
         yield return new WaitForSeconds(0.5f);
-        StateMachine.ActivateState(StateMachine.stateArray[0]);
+        StateMach.ActivateState(StateMach.stateArray[0]);
     }
 
 }
