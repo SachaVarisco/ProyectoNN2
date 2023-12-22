@@ -26,6 +26,7 @@ public class PatrollState : MonoBehaviour
     private int RandNum;
     private float VelocityX;
     private Vector3 PrevPosition;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class PatrollState : MonoBehaviour
         rotation = new Quaternion();
         RandNum = Random.Range(0,WayPoints.Length);
         rcOrientation = new Vector2(-1,0);
+
     }
     private void OnEnable() {
         StateIndicator.GetComponent<SpriteRenderer>().color = Color.green;

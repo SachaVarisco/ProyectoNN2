@@ -6,7 +6,7 @@ public class PersecutionState_Fireblack : MonoBehaviour
 {
     [Header("StateMachine")]
     private StateMachine StateMach;
-
+    [SerializeField] private GameObject StateIndicator;
     [Header("Player")]
     private Transform Player;
 
@@ -23,6 +23,11 @@ public class PersecutionState_Fireblack : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private float restartTime;
 
+    void OnEnable(){
+
+        timer = restartTime;
+        StateIndicator.GetComponent<SpriteRenderer>().color = Color.yellow;
+    }
 
     void Start()
     {
@@ -56,9 +61,8 @@ public class PersecutionState_Fireblack : MonoBehaviour
         if(distance > PersecutionDistance)
         {
             timer -= Time.deltaTime;
-            Debug.Log("distancia" + distance);
-            Debug.Log("timpo" + timer);
-
+            // Debug.Log("distancia" + distance);
+            // Debug.Log("timpo" + timer);
             if(timer <= 0) StateMach.ActivateState(StateMach.stateArray[0]);
             
         } else {

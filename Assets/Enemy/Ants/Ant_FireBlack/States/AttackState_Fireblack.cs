@@ -7,7 +7,7 @@ public class AttackState_Fireblack : MonoBehaviour
     
     [Header("StateMachine")]
     private StateMachine StateMach;
-
+    [SerializeField] private GameObject StateIndicator;
     [Header("Player")]
     private Transform Player;
 
@@ -33,10 +33,11 @@ public class AttackState_Fireblack : MonoBehaviour
         StateMach = GetComponent<StateMachine>();
         Player = GameObject.FindWithTag("Player").transform;
         AntTransform = GetComponent<Transform>();
-
+        StateIndicator.GetComponent<SpriteRenderer>().color = Color.red;
 
         shoot = true;
         StartCoroutine(ShootProjectile());
+
     }
 
     
