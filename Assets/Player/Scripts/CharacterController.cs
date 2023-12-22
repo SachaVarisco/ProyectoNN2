@@ -70,7 +70,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    bool OnTheFloor()
+    public bool OnTheFloor()
     {
         //Evitar salto multiple
         //

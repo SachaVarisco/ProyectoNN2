@@ -8,6 +8,8 @@ public class DashPlayer : MonoBehaviour
     private Rigidbody2D RigidBody;
     private PlayerUtils Utils;
     
+    [Header("Character Controller")]
+    private CharacterController CharacterControl;
 
     [Header("Dash")]
     [SerializeField] private float VelocityDash;
@@ -21,13 +23,19 @@ public class DashPlayer : MonoBehaviour
         Utils = GetComponent<PlayerUtils>();
         RigidBody = GetComponent<Rigidbody2D>();
         GravityStart = RigidBody.gravityScale;
+        CharacterControl = GetComponent<CharacterController>();
     }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && DashIsTrue){
+        if(Input.GetKeyDown(KeyCode.LeftShift) && DashIsTrue){
 
             StartCoroutine(Dash());
+        }
+        
+        if(CharacterControl.OnTheFloor()){
+
+            DashIsTrue = true;
         }
     }
 
@@ -42,7 +50,6 @@ public class DashPlayer : MonoBehaviour
         yield return new WaitForSeconds(TimeDash);
 
         Utils.moveIsTrue = true;
-        DashIsTrue = true;
         RigidBody.gravityScale = GravityStart;
         TrailRenderer.emitting = false;
     }
