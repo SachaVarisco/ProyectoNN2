@@ -8,6 +8,7 @@ public class CombatEnemy : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] private float damage;
     [SerializeField] private float TimeBetweenDamage;
+    
     private float TimeNextDamage;
 
     private void OnCollisionEnter2D(Collision2D other) {

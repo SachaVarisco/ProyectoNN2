@@ -20,6 +20,9 @@ public class CharacterController : MonoBehaviour
     public float jumpForce;
     public LayerMask floorMask;
     private BoxCollider2D BoxCollider;
+
+    [Header("Bounce Hit")]
+    [SerializeField] private Vector2 BouncePlayer;
     
     void Start()
     {
@@ -78,5 +81,10 @@ public class CharacterController : MonoBehaviour
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(BoxCollider.bounds.center, new Vector2(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y), 0f, Vector2.down, 0.2f, floorMask);
         return raycastHit.collider != null;
+    }
+
+    public void Bounce(Vector2 pointHit)
+    {
+        RigidBody.velocity = new Vector2(-BouncePlayer.x * pointHit.x, BouncePlayer.y);
     }
 }
