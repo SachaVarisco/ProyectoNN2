@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class RangeAttack : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float reloadTime;
     [SerializeField] private float countdown;
-    [SerializeField] private float bulletSpeed;
 
 
     [Header("Recoil")]
@@ -42,7 +42,8 @@ public class RangeAttack : MonoBehaviour
     }
 
     private void Shoot()
-    {
+    {   
+        AimShoot();
         countdown = reloadTime;
         GameObject bullet = Instantiate(bulletPrefab, bulletController.position, bulletController.rotation) as GameObject;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
@@ -51,19 +52,15 @@ public class RangeAttack : MonoBehaviour
        switch (Looking.direction)
         {
             case "Up":
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , 1 * bulletSpeed);
                 rigidBody.AddForce(Vector2.down * (utils.impulse/3), ForceMode2D.Impulse);
                 break;
             case "Down":
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , -1 * bulletSpeed);
                 rigidBody.AddForce(Vector2.up * (utils.impulse/3), ForceMode2D.Impulse);
                 break;
             case "Left":
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-1 * bulletSpeed, 0);
                 rigidBody.AddForce(Vector2.right * utils.impulse, ForceMode2D.Impulse);
                 break;
             case "Right":
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * bulletSpeed, 0);
                 rigidBody.AddForce(Vector2.left * utils.impulse, ForceMode2D.Impulse);
                 break;
             default:
@@ -77,10 +74,35 @@ public class RangeAttack : MonoBehaviour
         utils.moveIsTrue = false;
         rigidBody.gravityScale = 0;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         utils.moveIsTrue = true;
         rigidBody.gravityScale = 1;
+    }
+
+    private void AimShoot()
+    {
+        switch (Looking.direction)
+        {
+            case "Up":
+                bulletController.position = transform.position + new Vector3(0f, 2f, 0f);
+                bulletController.eulerAngles = new Vector3(0, 0, 90f);
+                break;
+            case "Down":
+                bulletController.position = transform.position + new Vector3(0f, -2f, 0f);
+                bulletController.eulerAngles = new Vector3(0, 0, 270f);
+                break;
+            case "Left":
+                bulletController.position = transform.position + new Vector3(-2f, 0f, 0f);
+                bulletController.eulerAngles = new Vector3(0, 0, 0f);
+                break;
+            case "Right":
+                bulletController.position = transform.position + new Vector3(2f, 0f, 0f);
+                bulletController.eulerAngles = new Vector3(0, 0, 180f);
+                break;
+            default:
+                break;
+        }
     }
 
 }

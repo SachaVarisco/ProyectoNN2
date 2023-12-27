@@ -6,15 +6,11 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float lifeTime;
-
-    private void Awake() 
-    {
-        damage = 30f;    
-        lifeTime = 0.1f;
-    }
+    [SerializeField] private float bulletSpeed;
 
     private void Update() 
     {
+        transform.Translate(Vector2.right * bulletSpeed * Time.deltaTime);
         lifeTime -= Time.deltaTime;
 
         if (lifeTime <= 0)
