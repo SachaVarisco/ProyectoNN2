@@ -10,7 +10,7 @@ public class SpikeController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyStats>().TakeDamage(SpikeDamage);
+            other.transform.parent.gameObject.GetComponent<EnemyStats>().TakeDamage(SpikeDamage);
             Destroy(gameObject);
         }
     }

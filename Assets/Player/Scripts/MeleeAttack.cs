@@ -52,6 +52,10 @@ public class MeleeAttack : MonoBehaviour
             {
                 collider.GetComponent<EnemyStats>().TakeDamage(MeleeDamage);
             }
+            if (collider.CompareTag("Boss"))
+            {
+                collider.transform.parent.gameObject.transform.parent.gameObject.GetComponent<EnemyStats>().TakeDamage(MeleeDamage);
+            }
         }
     }
     private void OnDrawGizmos() 
