@@ -12,6 +12,8 @@ public class PlayerUtils : MonoBehaviour
     public float Life;
     public float LifeMax;
     public LifeBar LifeBar;
+    public bool ParryActive;
+    public bool shieldBlock;
     
     private void Start()
     {
@@ -23,9 +25,21 @@ public class PlayerUtils : MonoBehaviour
         //LifeBar.StartLifeBar(Life);
     }
 
-    public void TakeDamage(float damage){
-        Life -= damage;
-        LifeBar.ChangeHPActual(Life);
+    public void TakeDamage(float damage)
+    {
+        if (!ParryActive)
+        {
+            if (shieldBlock)
+            {
+                Life -= damage/2;
+                LifeBar.ChangeHPActual(Life);
+            }
+            else
+            {
+                Life -= damage;
+                LifeBar.ChangeHPActual(Life);
+            }
+        }
 
         if (Life <= 0)
         {

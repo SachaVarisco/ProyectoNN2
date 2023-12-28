@@ -5,7 +5,7 @@ using UnityEngine;
 public class Parry : MonoBehaviour
 {
     [Header("Shield")]
-    private GameObject shield;
+    public GameObject shield;
     [SerializeField] private float shieldTime;
     [SerializeField] private float parryLimit;
     [SerializeField] private bool shieldActive;
@@ -22,17 +22,26 @@ public class Parry : MonoBehaviour
         {
             shield.SetActive(true);
             shieldActive = true;
-            if (shieldTime < 3f)
+
+            if (shieldTime < parryLimit)
             {
-                
+                shield.GetComponent<SpriteRenderer>().color = Color.yellow;
+                utils.ParryActive = true;
+            }
+            else
+            {
+                shield.GetComponent<SpriteRenderer>().color = Color.blue;
+                utils.ParryActive = false;
+                utils.shieldBlock = true;
             }
         }
 
         if (Input.GetButtonUp("C"))
         {
-            shield.SetActive(true);
-            shieldActive = true;
+            shield.SetActive(false);
+            shieldActive = false;
             shieldTime = 0f;
+            utils.shieldBlock = false;
         }
     }
 
