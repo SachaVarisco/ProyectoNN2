@@ -8,67 +8,49 @@ public class AttackState_AntLion : MonoBehaviour
     private StateMachine StateMach;
     [SerializeField] private GameObject StateIndicator;
 
-    [Header("Patroll")]
-    private PatrollState_AntLion Patroll;
-    private float Recoil;
+    // [Header("Patroll")]
+    // private PatrollState_AntLion Patroll;
+    // private float Recoil;
 
     [Header("Movement")]
     [SerializeField] private float Speed;
     private GameObject Player;
 
-    [Header("Attack")]
-    private bool Assault = false;
+    Vector2 target;
 
-
-    void Start()
-    {
-        StateMach = GetComponent<StateMachine>();
-        Patroll = GetComponent<PatrollState_AntLion>();
-        Player = GameObject.FindGameObjectWithTag("Player");
-
-    }
     private void OnEnable()
     {
         StateIndicator.GetComponent<SpriteRenderer>().color = Color.red;
         StartCoroutine(Wait2());
-        //ChangeAttack();
 
     }
+
+    void Start()
+    {
+        StateMach = GetComponent<StateMachine>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+    }
+
     void Update()
     {
-        Debug.Log("primero yo");
+        //embestida
+        transform.position = Vector2.MoveTowards(transform.position, target , Speed * Time.deltaTime);
 
-        if(Patroll.LookLeft){
 
-            Recoil = 2f;
-
-        }else{
-
-            Recoil = -2f;
-        }
-
-        if(Assault){
-
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(Player.transform.position.x, transform.position.y), Speed * Time.deltaTime);
-        }
-        
     }
-
+ 
     IEnumerator Wait2()
     {
+        //para que reconozca la posicion del Player
         yield return new WaitForSeconds(0.1f);
-
-        //carga el ataque (va para atras)
-        transform.position = new Vector2(transform.position.x + (Recoil), transform.position.y);
-
-        yield return new WaitForSeconds(0.5f);
-
-        Assault = true;
+        
+        target = new Vector2(Player.transform.position.x,transform.position.y);
 
         yield return new WaitForSeconds(1f);
 
-        Assault = false;
-        StateMach.ActivateState(StateMach.stateArray[0]);
+        StateMach.ActivateState(StateMach.stateArray[3]);
     }
+
 
 }

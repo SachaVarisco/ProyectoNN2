@@ -424,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &140051328
 Transform:
   m_ObjectHideFlags: 0
@@ -1896,7 +1896,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 213.70148, y: 5.0241117, z: -10}
+  m_LocalPosition: {x: 148.88281, y: 5.0496616, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2253,6 +2253,8 @@ GameObject:
   - component: {fileID: 546786403}
   - component: {fileID: 546786402}
   - component: {fileID: 546786408}
+  - component: {fileID: 546786410}
+  - component: {fileID: 546786409}
   - component: {fileID: 546786407}
   m_Layer: 0
   m_Name: Ant_Lion
@@ -2291,7 +2293,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateArray:
   - {fileID: 546786408}
+  - {fileID: 546786409}
   - {fileID: 546786407}
+  - {fileID: 546786410}
 --- !u!114 &546786403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,6 +2451,35 @@ MonoBehaviour:
   Speed: 5
   MinDistance: 0.5
   LookLeft: 1
+--- !u!114 &546786409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546786399}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959ca6784375f094ba50ef2232633371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateIndicator: {fileID: 1249163770}
+  Speed: 1
+--- !u!114 &546786410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546786399}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f387347b0884944bc0fd621f1eb538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateIndicator: {fileID: 1249163770}
+  MinDistance: 2
+  Speed: 5
 --- !u!1 &557754362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,7 +3186,7 @@ Transform:
   m_GameObject: {fileID: 762683161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 213.7, y: -1.82, z: 0}
+  m_LocalPosition: {x: 148.88, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8536,7 +8569,7 @@ Transform:
   m_GameObject: {fileID: 1938963663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0014801025, y: -6.844112, z: 0}
+  m_LocalPosition: {x: -0.0028076172, y: -7.0496616, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

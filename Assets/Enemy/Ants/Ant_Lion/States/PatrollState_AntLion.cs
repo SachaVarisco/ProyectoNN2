@@ -22,7 +22,7 @@ public class PatrollState_AntLion : MonoBehaviour
     [SerializeField] private Transform[] WayPoints;
     [SerializeField]private float Speed;
     [SerializeField] private float MinDistance;
-    public bool LookLeft = true;
+    [SerializeField] public bool LookLeft = true;
     private int RandNum;
     private float VelocityX;
     private Vector3 PrevPosition;
