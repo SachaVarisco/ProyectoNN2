@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
+    public Collider2D[] objects;
+    //public List<Collider2D> objects = new List<Collider2D>();
     private SpriteRenderer SpriteRenderer;
     [Header("Attack")]
     [SerializeField] private Transform MeleeController;
@@ -44,7 +46,7 @@ public class MeleeAttack : MonoBehaviour
     {
         ChangePosition();
         StartCoroutine(Alpha());
-        Collider2D[] objects = Physics2D.OverlapCircleAll(MeleeController.position, MeleeRadius);
+        objects = Physics2D.OverlapCircleAll(MeleeController.position, MeleeRadius);
 
         foreach (Collider2D collider in objects)
         {
@@ -56,6 +58,11 @@ public class MeleeAttack : MonoBehaviour
             {
                 collider.transform.parent.gameObject.transform.parent.gameObject.GetComponent<EnemyStats>().TakeDamage(MeleeDamage);
             }
+            if (collider.CompareTag("Ball"))
+            {
+                collider.GetComponent<BossBall>().ChangeObjective();
+            }
+
         }
     }
     private void OnDrawGizmos() 

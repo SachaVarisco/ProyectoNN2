@@ -18,7 +18,7 @@ public class Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("C"))
+        if (Input.GetButtonDown("Parry"))
         {
             shield.SetActive(true);
             shieldActive = true;
@@ -36,7 +36,7 @@ public class Parry : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("C"))
+        if (Input.GetButtonUp("Parry"))
         {
             shield.SetActive(false);
             shieldActive = false;

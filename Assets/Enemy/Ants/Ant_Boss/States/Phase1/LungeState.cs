@@ -31,6 +31,5 @@ public class LungeState : MonoBehaviour
     {
         Vector2 movement = Direction * Speed;
         rb2d.AddForce(movement, ForceMode2D.Impulse);
-
     }
 }
