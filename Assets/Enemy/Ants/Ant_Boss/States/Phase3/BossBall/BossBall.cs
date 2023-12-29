@@ -10,8 +10,16 @@ public class BossBall : MonoBehaviour
     [SerializeField] private Transform Boss;
     private float MaxHigh = 5;
     private float Gravity = -9.8f;
+
+    [Header ("Damage")]
+    [SerializeField] private float DamageBossBall;
+
+    private PlayerUtils LifePlayer;
+
+
     private void Start()
     {
+        LifePlayer = Player.GetComponent<PlayerUtils>();
         Objective = Player.transform;
         Launch();
     }
@@ -42,11 +50,18 @@ public class BossBall : MonoBehaviour
         {
             Objective = Player.transform;
             Launch();
+            
         }
         if (other.gameObject.tag == "Player")
         {
-            
+            LifePlayer.TakeDamage(DamageBossBall);
         }
+
+        // if (other.gameObject.layer == 6) //Layer "Platforms"
+        // {
+            
+            
+        // }
     }
     public void ChangeObjective(){
         Objective = Boss;

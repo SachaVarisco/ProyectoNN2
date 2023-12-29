@@ -4413,6 +4413,7 @@ MonoBehaviour:
   Objective: {fileID: 0}
   Player: {fileID: 762683161}
   Boss: {fileID: 1736541157}
+  DamageBossBall: 10
 --- !u!58 &936527911
 CircleCollider2D:
   m_ObjectHideFlags: 0
