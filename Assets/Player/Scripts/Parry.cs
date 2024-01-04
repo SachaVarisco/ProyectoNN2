@@ -28,7 +28,8 @@ public class Parry : MonoBehaviour
                 shield.GetComponent<SpriteRenderer>().color = Color.yellow;
                 utils.ParryActive = true;
             }
-            else
+            
+            if (shieldTime >= parryLimit)
             {
                 shield.GetComponent<SpriteRenderer>().color = Color.blue;
                 utils.ParryActive = false;
