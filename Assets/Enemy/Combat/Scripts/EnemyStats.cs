@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    [SerializeField] private float Life;
+    public float Life;
     [SerializeField] private float LifeMax;
 
     private void Start()

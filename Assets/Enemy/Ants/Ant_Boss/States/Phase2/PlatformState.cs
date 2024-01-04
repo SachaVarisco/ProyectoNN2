@@ -10,6 +10,8 @@ public class PlatformState : MonoBehaviour
 
     [Header("Impulse")]
     public bool canPush;
+    private float Counter;
+    private float Height;
     [SerializeField] private float Speed;
 
     [Header("Advisor")]
@@ -19,13 +21,21 @@ public class PlatformState : MonoBehaviour
         canPush = true;
         StateIndicator.GetComponent<SpriteRenderer>().color = Color.red;
         StartCoroutine(ChangeState());
+        Counter++;
     }
     private void Start() {
         StateMach = GetComponent<StateMachine>();
     }
     private void Update() {
         float step = Speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, 1.8f), step);
+        if (Counter < 3)
+        {
+            Height = -1;
+        }else if (Counter >=3)
+        {
+            Height = 1.8f;
+        } 
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, Height), step);
     }
     IEnumerator ChangeState(){
         yield return new WaitForSeconds(0.6f);

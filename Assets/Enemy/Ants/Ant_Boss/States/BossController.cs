@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] private GameObject Phase1;
+    [SerializeField] private GameObject Phase2;
+    [SerializeField] private GameObject Phase3;
+
+    private float BossLife;
+
+    private void Start() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        BossLife = GetComponent<EnemyStats>().Life;
+        if (BossLife == 100)
+        {
+            Phase1.SetActive(true); 
+        }else if (BossLife == 70)
+        {
+            Phase1.SetActive(false);
+            Phase2.SetActive(true);
+        }else if (BossLife == 40)
+        {
+            Phase1.SetActive(false);
+            Phase2.SetActive(false);
+            Phase3.SetActive(true);
+        }
     }
 }
