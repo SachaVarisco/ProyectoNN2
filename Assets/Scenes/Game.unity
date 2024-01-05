@@ -8395,7 +8395,10 @@ MonoBehaviour:
   - {fileID: 1355187043}
   - {fileID: 25303981}
   AttackDistance: 20
-  distanceRaycast: 2.5
+  distanceRaycast: 3
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1795370387
 GameObject:
   m_ObjectHideFlags: 0

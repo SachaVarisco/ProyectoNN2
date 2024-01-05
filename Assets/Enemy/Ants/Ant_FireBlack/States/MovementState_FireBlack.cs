@@ -25,6 +25,7 @@ public class MovementState_FireBlack : MonoBehaviour
 
     [Header("RayCast")]
     [SerializeField] private float distanceRaycast;
+    public LayerMask targetLayer;
 
     private Vector3 MoveTo;
     private int RandNum;
@@ -59,12 +60,11 @@ public class MovementState_FireBlack : MonoBehaviour
         //Raycast
         Vector2 raycastOrigin = transform.position;
         Vector2 raycastDirection = Vector2.down;
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, raycastDirection, distanceRaycast);
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, raycastDirection, distanceRaycast, targetLayer);
 
         //Movimiento de enemigo
-        if (hit.collider.gameObject.layer == 6)
+        if (hit.collider != null)
         {   
-            Debug.Log("Golpeó: " + hit.collider.gameObject.name);
             AntTransform.position = Vector3.MoveTowards(AntTransform.position, WayPoints[0].position, Speed * Time.deltaTime);
         } else {
             AntTransform.position = Vector3.MoveTowards(AntTransform.position, MoveTo, Speed * Time.deltaTime);
