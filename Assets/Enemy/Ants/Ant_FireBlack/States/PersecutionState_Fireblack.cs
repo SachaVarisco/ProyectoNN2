@@ -7,6 +7,7 @@ public class PersecutionState_Fireblack : MonoBehaviour
     [Header("StateMachine")]
     private StateMachine StateMach;
     [SerializeField] private GameObject StateIndicator;
+    
     [Header("Player")]
     private Transform Player;
 
@@ -40,7 +41,7 @@ public class PersecutionState_Fireblack : MonoBehaviour
     void Update()
     {
         //Perseguir jugador
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(Player.position.x, transform.position.y), Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(Player.position.x, Player.position.y), Speed * Time.deltaTime);
         Distance();
         CorroborateDistance();
         
@@ -61,8 +62,6 @@ public class PersecutionState_Fireblack : MonoBehaviour
         if(distance > PersecutionDistance)
         {
             timer -= Time.deltaTime;
-            // Debug.Log("distancia" + distance);
-            // Debug.Log("timpo" + timer);
             if(timer <= 0) StateMach.ActivateState(StateMach.stateArray[0]);
             
         } else {
@@ -71,7 +70,7 @@ public class PersecutionState_Fireblack : MonoBehaviour
         }
 
 
-        if(distance < AttackDistance) StateMach.ActivateState(StateMach.stateArray[2]);
+        if(distance < AttackDistance) StateMach.ActivateState(StateMach.stateArray[3]);
         
     }
 }
