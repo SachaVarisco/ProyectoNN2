@@ -33,7 +33,7 @@ public class PatrollState : MonoBehaviour
         StateMach = GetComponent<StateMachine>();
         rotation = new Quaternion();
         RandNum = Random.Range(0,WayPoints.Length);
-        rcOrientation = new Vector2(-1,0);
+        rcOrientation = Vector2.left;
 
     }
     private void OnEnable() {
@@ -85,6 +85,4 @@ public class PatrollState : MonoBehaviour
         rcOrientation = rcOrientation * new Vector2(-1,0);
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
     }
-
-
 }

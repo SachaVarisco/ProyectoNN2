@@ -21,12 +21,15 @@ public class PingPongState : MonoBehaviour
         if (BossCounter == 0)
         {
             Ball.GetComponent<BossBall>().speed = 0;
+            Ball.GetComponent<BossBall>().floorTime = 3;
         }else if (BossCounter == 1)
         {
             Ball.GetComponent<BossBall>().speed = 3;
+            Ball.GetComponent<BossBall>().floorTime = 1;
         }else if (BossCounter == 2)
         {
             Ball.GetComponent<BossBall>().speed = 5;
+            Ball.GetComponent<BossBall>().floorTime = 0;
         }
         Instantiate(Ball, BallLauncher.position, Quaternion.identity);
     }
@@ -45,4 +48,5 @@ public class PingPongState : MonoBehaviour
             }
         }
     }
+    
 }
