@@ -33,6 +33,12 @@ public class PingPongState : MonoBehaviour
         }
         Instantiate(Ball, BallLauncher.position, Quaternion.identity);
     }
+    private void Update() {
+        if (GameObject.FindGameObjectWithTag("Ball") == null)
+        {
+            StateMach.ActivateState(StateMach.stateArray[0]);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Ball")
         {
@@ -48,5 +54,5 @@ public class PingPongState : MonoBehaviour
             }
         }
     }
-    
+
 }

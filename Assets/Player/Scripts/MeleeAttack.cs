@@ -61,7 +61,6 @@ public class MeleeAttack : MonoBehaviour
             if (collider.CompareTag("Ball"))
             {
                 collider.GetComponent<BossBall>().ChangeObjective();
-                
             }
 
         }

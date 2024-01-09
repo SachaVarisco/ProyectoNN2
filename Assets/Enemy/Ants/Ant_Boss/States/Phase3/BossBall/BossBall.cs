@@ -6,7 +6,8 @@ public class BossBall : MonoBehaviour
 {
     [Header ("Throw")]
     public float speed;
-    private float MaxHigh;
+    private GameObject RandObject;
+    private float MaxHigh = 5;
     private  Transform Objective;
     private GameObject Player;
     private Transform Boss;
@@ -34,7 +35,7 @@ public class BossBall : MonoBehaviour
         LifePlayer = Player.GetComponent<PlayerUtils>();
         CircleCollider = GetComponent<CircleCollider2D>();
         Objective = Player.transform;
-        MaxHigh = 5;
+        RandObject = GameObject.Find("RandObject");
         Launch();
     }
     private void Update(){
@@ -64,7 +65,7 @@ public class BossBall : MonoBehaviour
         VelocityX = P.x / ((-VelocityY / Gravity) + Mathf.Sqrt(2 * (P.y - MaxHigh) / Gravity));
         if (Objective == Player.transform)
         {
-            VelocityX += speed;
+            VelocityX -= speed;
         }
         return new Vector2(VelocityX , VelocityY);
     }
@@ -80,7 +81,13 @@ public class BossBall : MonoBehaviour
         }
     }
     public void ChangeObjective(){
-        Objective = Boss;
+        if (Player.transform.position.x <= transform.position.x)
+        {
+            Objective = Boss;
+        }else
+        {
+            Objective = RandObject.transform;
+        }
         Launch();
     }
     private void ChangeState(){
