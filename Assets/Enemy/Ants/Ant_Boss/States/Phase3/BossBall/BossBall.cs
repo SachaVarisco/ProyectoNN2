@@ -44,11 +44,9 @@ public class BossBall : MonoBehaviour
         VelocityX = P.x / ((-VelocityY / Gravity) + Mathf.Sqrt(2 * (P.y - MaxHigh) / Gravity));
         if (Objective == Player.transform)
         {
-            VelocityX -= speed;
-        }/*else if (Objective == Boss)
-        {
             VelocityX += speed;
-        }*/
+            //VelocityY -= speed;
+        }
         return new Vector2(VelocityX , VelocityY);
     }
     private void OnCollisionEnter2D(Collision2D other) {

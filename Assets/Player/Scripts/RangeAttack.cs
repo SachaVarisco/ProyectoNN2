@@ -77,7 +77,7 @@ public class RangeAttack : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         utils.moveIsTrue = true;
-        rigidBody.gravityScale = 1;
+        rigidBody.gravityScale = 2;
     }
 
     private void AimShoot()

@@ -30,10 +30,11 @@ public class PlatformState : MonoBehaviour
         float step = Speed * Time.deltaTime;
         if (Counter < 3)
         {
-            Height = -1;
+            Height = -1.5f;
         }else if (Counter >=3)
         {
             Height = 1.8f;
+            //Counter = 0;
         } 
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, Height), step);
     }
