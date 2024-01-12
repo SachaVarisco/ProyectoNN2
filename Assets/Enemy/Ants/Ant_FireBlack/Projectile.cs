@@ -11,10 +11,12 @@ public class Projectile : MonoBehaviour
     private PlayerUtils LifePlayer;
     private Rigidbody2D Rb;
 
+    private Animator animator;
+
     
 
     void Start(){
-
+        animator = GetComponent<Animator>();
         Player = GameObject.FindWithTag("Player");
         LifePlayer = Player.GetComponent<PlayerUtils>();
         Rb = GetComponent<Rigidbody2D>();

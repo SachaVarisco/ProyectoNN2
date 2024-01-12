@@ -23,6 +23,8 @@ public class CharacterController : MonoBehaviour
 
     [Header("Bounce Hit")]
     [SerializeField] private Vector2 BouncePlayer;
+
+    private Animator animator;
     
     void Start()
     {
@@ -30,6 +32,7 @@ public class CharacterController : MonoBehaviour
         RigidBody = GetComponent<Rigidbody2D>();
         BoxCollider = GetComponent<BoxCollider2D>();
         utils = GetComponent<PlayerUtils>();
+        animator = GetComponent<Animator>();
     }
 
     
@@ -38,9 +41,9 @@ public class CharacterController : MonoBehaviour
         if (utils.moveIsTrue)
         {
             CharacterMovement();
+            Jump();
         }
         
-        Jump();
     }
 
 
@@ -71,7 +74,40 @@ public class CharacterController : MonoBehaviour
         {
             RigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+
+        if(OnTheFloor())
+        {
+            utils.onTheFloor = true;
+        } else {
+            utils.onTheFloor = false;
+        }
     }
+
+    // private void Animations()
+    // {   
+    //     //Movimiento correr
+    //     if (Input.GetKey(KeyCode.A) && OnTheFloor() || Input.GetKey(KeyCode.D) && OnTheFloor())
+    //     {
+    //         animator.SetBool("isRunning", true);
+
+    //     } else {
+
+    //         animator.SetBool("isRunning", false);
+    //     }
+
+    //     //Salto
+    //     if(!OnTheFloor())
+    //     {
+    //         animator.SetBool("isJumping", true);
+
+    //     } else {
+
+    //         animator.SetBool("isJumping", false);
+    //     }
+
+    //     animator.SetFloat("MoveY", RigidBody.velocity.y);
+        
+    // }
 
     public bool OnTheFloor()
     {
@@ -87,4 +123,6 @@ public class CharacterController : MonoBehaviour
     {
         RigidBody.velocity = new Vector2(-BouncePlayer.x * pointHit.x, BouncePlayer.y);
     }
+
+
 }
