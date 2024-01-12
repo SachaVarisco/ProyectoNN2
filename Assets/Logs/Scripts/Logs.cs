@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Logs : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string logName;
+    public string logDescription;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public class Objetive{
+        public int objetiveId;
     }
 }
