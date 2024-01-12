@@ -87,7 +87,6 @@ public class AnimationsPlayer : MonoBehaviour
 
             if(Input.GetMouseButtonDown(0))
             {
-                Debug.Log("entro");
                 animator.SetBool("isAttackingJump", true);
             }else{
                 animator.SetBool("isAttackingJump", false);

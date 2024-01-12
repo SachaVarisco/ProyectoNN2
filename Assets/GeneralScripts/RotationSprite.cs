@@ -35,7 +35,7 @@ public class RotationSprite : MonoBehaviour
         return VelocityX;
     }
     
-    private void RotateX()
+    public void RotateX()
     {
         LookLeft = !LookLeft;
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);

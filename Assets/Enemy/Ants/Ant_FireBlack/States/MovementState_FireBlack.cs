@@ -7,6 +7,7 @@ public class MovementState_FireBlack : MonoBehaviour
     [Header("StateMachine")]
     private StateMachine StateMach;
     [SerializeField] private GameObject StateIndicator;
+    
     [Header("Player")]
     private Transform Player;
 
