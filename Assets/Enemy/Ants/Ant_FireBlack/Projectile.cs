@@ -42,12 +42,12 @@ public class Projectile : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D other)
     {
 
-     Destroy(gameObject);
+        Destroy(gameObject);
 
-     if(other.collider.CompareTag("Player"))
-     {
-        LifePlayer.TakeDamage(DamageProjectile);
-     }
+        if(other.collider.CompareTag("Player"))
+        {
+            LifePlayer.TakeDamage(DamageProjectile);
+        }
     }
 
     // private void OnTriggerEnter(Collider other)
