@@ -7,13 +7,15 @@ public class PlayerUtils : MonoBehaviour
     [Header("Stats")]
 
     public float speed;
-    public bool moveIsTrue = true;
     public float impulse;
     public float Life;
     public float LifeMax;
     public LifeBar LifeBar;
     public bool ParryActive;
     public bool shieldBlock;
+
+    public bool moveIsTrue = true;
+    public bool onTheFloor = true;
     
     private void Start()
     {

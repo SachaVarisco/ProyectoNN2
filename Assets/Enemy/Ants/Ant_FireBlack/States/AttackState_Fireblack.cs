@@ -12,22 +12,52 @@ public class AttackState_Fireblack : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] private GameObject ProjectilePrefabs;
 
+    [Header("Player")]
+    private Transform Player;
+
+    private Animator animator;
+
+    private RotationSprite rotation;
+
     
 
 
     void OnEnable()
     {
+        Player = GameObject.FindWithTag("Player").transform;
+        animator = GetComponent<Animator>();
         StateMach = GetComponent<StateMachine>();
+        rotation = GetComponent<RotationSprite>();
         StateIndicator.GetComponent<SpriteRenderer>().color = Color.red;
+
+        if(Player.position.x > transform.position.x && rotation.LookLeft == true)
+        {
+            rotation.RotateX();
+
+        }else if(Player.position.x < transform.position.x && rotation.LookLeft != true)
+        {
+            rotation.RotateX();
+        }
 
         StartCoroutine(ShootProjectile());
         
     }
 
-    IEnumerator ShootProjectile(){
+    IEnumerator ShootProjectile()
+    {
 
-        Instantiate(ProjectilePrefabs, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(0.2f);
+
+        if(rotation.LookLeft == true)
+        {
+            Instantiate(ProjectilePrefabs, new Vector3(transform.position.x - 1, transform.position.y, 0), Quaternion.identity);
+        }else{
+            Instantiate(ProjectilePrefabs, new Vector3(transform.position.x + 1, transform.position.y, 0), Quaternion.identity);
+        }
+        
+        yield return new WaitForSeconds(0.3f);
+        animator.SetBool("isAttacking", false);
         StateMach.ActivateState(StateMach.stateArray[3]);
         
     }

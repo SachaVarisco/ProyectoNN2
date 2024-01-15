@@ -70,7 +70,7 @@ public class PersecutionState_Fireblack : MonoBehaviour
         }
 
 
-        if(distance < AttackDistance) StateMach.ActivateState(StateMach.stateArray[3]);
+        if(distance < AttackDistance) StateMach.ActivateState(StateMach.stateArray[2]);
         
     }
 }

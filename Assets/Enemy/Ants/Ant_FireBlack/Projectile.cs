@@ -11,10 +11,12 @@ public class Projectile : MonoBehaviour
     private PlayerUtils LifePlayer;
     private Rigidbody2D Rb;
 
+    private Animator animator;
+
     
 
     void Start(){
-
+        animator = GetComponent<Animator>();
         Player = GameObject.FindWithTag("Player");
         LifePlayer = Player.GetComponent<PlayerUtils>();
         Rb = GetComponent<Rigidbody2D>();
@@ -40,12 +42,12 @@ public class Projectile : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D other)
     {
 
-     Destroy(gameObject);
+        Destroy(gameObject);
 
-     if(other.collider.CompareTag("Player"))
-     {
-        LifePlayer.TakeDamage(DamageProjectile);
-     }
+        if(other.collider.CompareTag("Player"))
+        {
+            LifePlayer.TakeDamage(DamageProjectile);
+        }
     }
 
     // private void OnTriggerEnter(Collider other)
