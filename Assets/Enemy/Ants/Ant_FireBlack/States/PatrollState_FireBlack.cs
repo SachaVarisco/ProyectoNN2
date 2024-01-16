@@ -29,23 +29,23 @@ public class PatrollState_FireBlack : MonoBehaviour
     private Vector3 MoveTo;
     private int RandNum;
     private int RepetitiveNumber;
-    
+    private RotationSprite rotation;
+    private Ant_FireBlack_Rotation rotation2;
 
 
     private void OnEnable(){
         StateIndicator.GetComponent<SpriteRenderer>().color = Color.green;
-
-        StartCoroutine(Movement());
-    }
-
-    
-    void Start(){
-
+        rotation = GetComponent<RotationSprite>();
+        rotation2 = GetComponent<Ant_FireBlack_Rotation>();
         StateMach = GetComponent<StateMachine>();
         Player = GameObject.FindWithTag("Player").transform;
         AntTransform = GetComponent<Transform>();
 
+        rotation.enabled = true;
+        rotation2.enabled = false;
+        StartCoroutine(Movement());
     }
+
 
     void Update(){
 
@@ -66,7 +66,9 @@ public class PatrollState_FireBlack : MonoBehaviour
 
         if(distance < PersecutionDistance)
         {
-            StateMach.ActivateState(StateMach.stateArray[1]);   
+            rotation.enabled = false;
+            rotation2.enabled = true;
+            StateMach.ActivateState(StateMach.stateArray[1]);
         }
     }
 

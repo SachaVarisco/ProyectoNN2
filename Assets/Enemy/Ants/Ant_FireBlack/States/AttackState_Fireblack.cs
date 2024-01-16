@@ -12,9 +12,6 @@ public class AttackState_Fireblack : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] private GameObject ProjectilePrefabs;
 
-    [Header("Player")]
-    private Transform Player;
-
     private Animator animator;
 
     private RotationSprite rotation;
@@ -24,20 +21,10 @@ public class AttackState_Fireblack : MonoBehaviour
 
     void OnEnable()
     {
-        Player = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
         StateMach = GetComponent<StateMachine>();
         rotation = GetComponent<RotationSprite>();
         StateIndicator.GetComponent<SpriteRenderer>().color = Color.red;
-
-        if(Player.position.x > transform.position.x && rotation.LookLeft == true)
-        {
-            rotation.RotateX();
-
-        }else if(Player.position.x < transform.position.x && rotation.LookLeft != true)
-        {
-            rotation.RotateX();
-        }
 
         StartCoroutine(ShootProjectile());
         
