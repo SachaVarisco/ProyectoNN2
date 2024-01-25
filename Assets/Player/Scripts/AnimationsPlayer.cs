@@ -94,4 +94,15 @@ public class AnimationsPlayer : MonoBehaviour
         }
         
     }
+
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        
+        if (other.gameObject.name == "Ant_BearTrap"){
+
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isRunning", false);
+        }
+ 
+    }
 }
