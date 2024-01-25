@@ -36,7 +36,7 @@ public class BossBall : MonoBehaviour
     private Vector2 CalcInitialVelocity(){
         Vector2 P = Objective.position - gameObject.transform.position;
 
-        float VelocityY, VelocityX , VelocityZ;
+        float VelocityY, VelocityX /*, VelocityZ*/;
 
         VelocityY = Mathf.Sqrt(-2 * Gravity * MaxHigh);
 
