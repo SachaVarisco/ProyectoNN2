@@ -53,7 +53,7 @@ public class Patroll : MonoBehaviour
     private void RotateX()
     {
         LookLeft = !LookLeft;
-        transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+        transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
     }
     /*public void OnCollisionEnter2D(Collision2D other)
    {
