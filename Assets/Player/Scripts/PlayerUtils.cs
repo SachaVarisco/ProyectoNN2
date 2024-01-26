@@ -13,18 +13,24 @@ public class PlayerUtils : MonoBehaviour
     public LifeBar LifeBar;
     public bool ParryActive;
     public bool shieldBlock;
-
     public bool moveIsTrue = true;
     public bool onTheFloor = true;
-    
+
+    [Header("Bounce")]
+    private CharacterController characterController;
+    [SerializeField] private float timeControlLost;
+
     private void Start()
     {
+
+        characterController = GetComponent<CharacterController>();
+
         speed = 10;
         impulse = 20;
         LifeMax = 100;
 
         Life = LifeMax;
-        //LifeBar.StartLifeBar(Life);
+        LifeBar.StartLifeBar(Life);
     }
 
     public void TakeDamage(float damage)
@@ -33,7 +39,7 @@ public class PlayerUtils : MonoBehaviour
         {
             if (shieldBlock)
             {
-                Life -= damage/2;
+                Life -= damage / 2;
                 LifeBar.ChangeHPActual(Life);
             }
             else
@@ -47,5 +53,40 @@ public class PlayerUtils : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage(float damage, Vector2 position)
+    {
+
+        if (!ParryActive)
+        {
+            if (shieldBlock)
+            {
+                Life -= damage / 2;
+                LifeBar.ChangeHPActual(Life);
+            }
+            else
+            {
+                Life -= damage;
+                LifeBar.ChangeHPActual(Life);
+            }
+        }
+
+        if (Life <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        StartCoroutine(ControlLost());
+        characterController.Bounce(position);
+    }
+
+    private IEnumerator ControlLost()
+    {
+
+        moveIsTrue = false;
+        yield return new WaitForSeconds(timeControlLost);
+        moveIsTrue = true;
+
     }
 }

@@ -8,6 +8,8 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public bool isPaused;
 
+    [SerializeField] private GameObject allSprites;
+
     private void Awake() {
 
         current = this;
@@ -36,6 +38,8 @@ public class Pause : MonoBehaviour
         this.isPaused = true;
         this.pauseMenu.SetActive(true);
 
+        allSprites.SetActive(false);
+
         Time.timeScale = 0;
     }
 
@@ -43,6 +47,8 @@ public class Pause : MonoBehaviour
 
         this.isPaused = false;
         this.pauseMenu.SetActive(false);
+
+        allSprites.SetActive(true);
 
         Time.timeScale = 1;
     }

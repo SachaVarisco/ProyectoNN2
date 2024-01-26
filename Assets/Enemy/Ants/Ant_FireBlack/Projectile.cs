@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
 
         if(other.collider.CompareTag("Player"))
         {
-            LifePlayer.TakeDamage(DamageProjectile);
+            LifePlayer.TakeDamage(DamageProjectile, other.GetContact(0).normal);
         }
     }
 

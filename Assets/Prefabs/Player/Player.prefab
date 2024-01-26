@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5324408162110192618}
   - component: {fileID: 573757249247636143}
   - component: {fileID: 6992858892103779967}
+  - component: {fileID: 169474006121065102}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -228,6 +229,7 @@ MonoBehaviour:
   shieldBlock: 0
   moveIsTrue: 1
   onTheFloor: 0
+  timeControlLost: 1
 --- !u!114 &4381725901528433136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +293,7 @@ MonoBehaviour:
   floorMask:
     serializedVersion: 2
     m_Bits: 64
-  BouncePlayer: {x: 0, y: 0}
+  BouncePlayer: {x: 10, y: 10}
 --- !u!114 &1125193424842435259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +359,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &169474006121065102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130913274418193324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e505090df977541bcdc3964f4c4e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawn: {fileID: 0}
 --- !u!1 &1249211177221190929
 GameObject:
   m_ObjectHideFlags: 0
