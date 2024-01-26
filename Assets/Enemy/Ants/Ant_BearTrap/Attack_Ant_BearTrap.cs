@@ -11,14 +11,14 @@ public class Attack_Ant_BearTrap : MonoBehaviour
     [Header("Player")]
     private GameObject Player;
     private float PlayerSpeed;
-    private bool PlayerInTrap = false;
+    [SerializeField]private bool PlayerInTrap = false;
 
     [Header("Animacion")]
     private Animator animator;
 
     [Header("Fade Out")]
     private SpriteRenderer sprite;
-    private bool enemyDeath = false;
+    [SerializeField]private bool enemyDeath = false;
     private PolygonCollider2D polygonCollider2D;
 
 
@@ -69,7 +69,7 @@ public class Attack_Ant_BearTrap : MonoBehaviour
         yield return new WaitForSeconds(AttackTime);
         animator.SetBool("isAttacking", true);
         if(PlayerInTrap) Player.GetComponent<PlayerUtils>().TakeDamage(damage);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         enemyDeath = true;
         polygonCollider2D.enabled = false;
         yield return new WaitForSeconds(2f);

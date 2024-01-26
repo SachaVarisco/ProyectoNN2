@@ -90,8 +90,8 @@ Transform:
   m_GameObject: {fileID: 3863796132913171997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 2.28, z: 0}
-  m_LocalScale: {x: 0.114375, y: 1, z: 1}
+  m_LocalPosition: {x: -0.04, y: 0.56, z: 0}
+  m_LocalScale: {x: 0.1744604, y: 0.188081, z: 0.188081}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5711059767800246443}
@@ -228,6 +228,8 @@ GameObject:
   - component: {fileID: 8359592210992912825}
   - component: {fileID: 7113269829927921268}
   - component: {fileID: 1248403682441673738}
+  - component: {fileID: 8952633917486156668}
+  - component: {fileID: 8095432138206042407}
   m_Layer: 0
   m_Name: Ant_TurtleSoldier
   m_TagString: Untagged
@@ -245,7 +247,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5365982, y: -3.1473598, z: 0.09711324}
-  m_LocalScale: {x: 3.05, y: 0.325, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1931678889742337288}
@@ -292,12 +294,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -752377973, guid: b9f7f5813a1e4da47b26ae78ef038431, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_DrawMode: 1
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -335,8 +337,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015004894, y: -0.0000007503822}
-  m_Size: {x: 0.9148313, y: 1.7484267}
+  m_Offset: {x: 0.00050554104, y: -0.21462788}
+  m_Size: {x: 0.9769386, y: 0.4838818}
   m_Direction: 1
 --- !u!114 &5785558620626929047
 MonoBehaviour:
@@ -421,3 +423,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateIndicator: {fileID: 3863796132913171997}
   Speed: 8
+--- !u!114 &8952633917486156668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140248463840591319}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bc29fcbed95e742a1604853fcf5033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LookLeft: 1
+--- !u!95 &8095432138206042407
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140248463840591319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 701c982d9b78b3c469223bca93186623, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

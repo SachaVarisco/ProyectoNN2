@@ -38,9 +38,9 @@ public class AttackState_Fireblack : MonoBehaviour
 
         if(rotation.LookLeft == true)
         {
-            Instantiate(ProjectilePrefabs, new Vector3(transform.position.x - 1, transform.position.y, 0), Quaternion.identity);
+            Instantiate(ProjectilePrefabs, new Vector3(transform.position.x - 0.5f, transform.position.y, 0), Quaternion.identity);
         }else{
-            Instantiate(ProjectilePrefabs, new Vector3(transform.position.x + 1, transform.position.y, 0), Quaternion.identity);
+            Instantiate(ProjectilePrefabs, new Vector3(transform.position.x + 0.5f, transform.position.y, 0), Quaternion.identity);
         }
         
         yield return new WaitForSeconds(0.3f);
