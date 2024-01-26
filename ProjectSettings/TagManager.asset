@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Boss
   - Ball
+  - Sprites
   layers:
   - Default
   - TransparentFX
