@@ -6,7 +6,7 @@ using Cinemachine;
 public class CameraZoom : MonoBehaviour
 {
 
-    [SerializeField] private GameObject ColliderZoom;
+    [SerializeField] private GameObject[] ColliderZoom;
     private CinemachineController cine;
     void Awake()
     {
@@ -19,7 +19,8 @@ public class CameraZoom : MonoBehaviour
 
             cine.ZoomAntBoss();
 
-            ColliderZoom.SetActive(true);
+            ColliderZoom[0].SetActive(false);
+            ColliderZoom[1].SetActive(true);
 
         }
 

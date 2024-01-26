@@ -22,6 +22,7 @@ public class CinemachineController : MonoBehaviour
 
         if(zoomActived){
 
+            Debug.Log(zoom);
             vcam1.m_Lens.OrthographicSize = Mathf.SmoothDamp(vcam1.m_Lens.OrthographicSize, zoom, ref velocity, smoothTime);
         }
         
